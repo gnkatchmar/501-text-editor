@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 class Input extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: '', bold: false };
+    this.state = { text: '', bold: false, italics: false };
     this.handleUpdate = this.handleUpdate.bind(this);
     this.checkBold = this.checkBold.bind(this);
+    this.checkItalics = this.checkItalics.bind(this);
   }
 
   handleUpdate(event) {
@@ -14,6 +15,10 @@ class Input extends Component {
 
   checkBold(event) {
     this.setState({ bold: event.target.checked });
+  }
+
+  checkItalics(event) {
+    this.setState({ italics: event.target.checked });
   }
 
 
@@ -35,6 +40,15 @@ class Input extends Component {
           onChange={this.checkBold} 
           checked={this.state.bold}
         />
+        <p></p>
+        Italics?:
+        <input 
+          type="checkbox"
+          id="italics"
+          onChange={this.checkItalics} 
+          checked={this.state.italics}
+        />
+
 
 
 
@@ -45,6 +59,7 @@ class Input extends Component {
         <textarea rows="10" cols="50"
           value={this.state.text}
           style={{fontWeight: this.state.bold ? "bold" : "normal"}}
+          style={{fontWeight: this.state.italics ? "italics" : "normal"}}
         />
 
       </div>
